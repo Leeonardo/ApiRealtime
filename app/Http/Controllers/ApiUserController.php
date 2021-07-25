@@ -24,6 +24,16 @@ class ApiUserController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user_requets = new User();
+        $user_requets->name = $request->name;
+        $user_requets->email = $request->email;
+        $user_requets->password = $request->password;
+
+        $user_requets->save();
+
+        return $user_requets;
+
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
